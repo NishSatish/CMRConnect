@@ -1,0 +1,77 @@
+
+		body{ 
+			font-family: verdana; 
+			font-size: 15px;
+             margin: 0px;
+            background-size: cover;
+		}
+		#h{
+		background-color: white;
+		margin: 0px auto;
+		border: 1px solid red;
+		width: 350px;
+		box-shadow: 1px 0px 15px blue; 
+		opacity: 0.95;
+		margin-top: 145px;
+		height: 400px;
+	}
+	input{
+		display: block;
+		margin: 45px;
+	}
+	#r{
+		background-color: red;
+		text-align: center;
+		font-size: 22px;
+		font-weight: bold;
+		color: white;
+		padding: 20px;
+		box-shadow: 1px 0px 15px blue; 
+	}
+	input[type=text] , input[type=password] {
+		font-size: 15px;
+		padding: 10px;
+		border-radius: 3px; 
+		border:1px solid #ddd;
+		box-shadow: 1px 0px 15px #4092DF; 
+	}
+	input[type=submit] {
+		background-color: blue;
+        border: 1px solid red; 
+        color: white;
+        font-weight: bold;
+        padding: 5px 10px 5px 10px;
+        border-radius: 3px;
+        box-shadow: 1px 0px 15px blue; 
+	}	
+	#w{
+		height: 160px;
+        display: flex;
+		justify-content: center;
+	}
+	#x{
+           text-decoration: none;
+	}
+	#nav{
+		width: 100%;
+		background-color: #4092DF;
+		height: 130px;
+		margin-top: 0px;
+		padding-top: 50PX;
+		
+	}
+    #link{
+    	text-align: center;
+    	text-decoration: none;
+    	color: white;
+    	padding: 20px;
+    	font-size: 25px;
+    	padding-bottom: 155px;
+    }
+    #k{
+		text-align: left;
+		padding-left: 55px;
+		color: yellow;
+		text-decoration: none;
+		font-size: 25px;
+	}	
