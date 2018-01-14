@@ -6,15 +6,11 @@ A networking site for a school based in Bangalore, India.
 # Setup
 
 * Download or clone.
-1.
-    ```	
-    cd CMRConnect
-    ```	
+1.   ``` cd CMRConnect  ```	
 		
-2.
-    ```
-    php artisan key:generate
-    ```
+2.   ``` php artisan key:generate ```
+    
+    
 
 	
 3. To migrate database seeds:
