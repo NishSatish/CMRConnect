@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+
 use App\User;
 
-class PostControl extends Controller
+class ProPicControl extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class PostControl extends Controller
      */
     public function index()
     {
-        $posts =  Post::orderBy('created_at', 'desc')->get();
-        
-        return view('home')->with('posts', $posts);
+        //
     }
 
     /**
@@ -27,7 +25,7 @@ class PostControl extends Controller
      */
     public function create()
     {
-        return view('create');
+        //
     }
 
     /**
@@ -38,18 +36,35 @@ class PostControl extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required', 
-            'body' => 'required',
-        ]);
+        //profile pic
+        // Handle upload
+        if ($request->hasFile('profile_pic')) {
+            // Get filename with extension
+            $fileNameWithExt = $request->file('profile_pic')->getClientOriginalName();
 
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->user_id = auth()->user()->id;
-        $post->save();
+            // Get only name
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            //Get only ext
+            $ext = $request->file('profile_pic')->getClientOriginalExtension();
+
+            //Final name
+            $fileName2store = $filename.'_'.time().'.'.$ext;
+
+            //Upload img
+            $path = $request->file('profile_pic')->storeAs('public/profile_pics', $fileName2store);
+        } else {
+            $fileName2store = 'noimage.jpg';
+        }
+
+        //Create img
+        $usersId = auth()->user()->id;
+        $user = User::find($usersId);
+        $user->profile_pic = $fileName2store;
+        $user->save();
 
         return redirect('/home')->with('success', 'Post Created');
+
     }
 
     /**
@@ -60,8 +75,7 @@ class PostControl extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        return view('show')->with('post', $post);
+        //
     }
 
     /**

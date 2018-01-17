@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/posts', 'PostControl');
+Route::resource('/propicsamma', 'ProPicControl');
 Route::resource('/feed', 'FeedControl');
 
 Auth::routes();

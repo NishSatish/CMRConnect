@@ -29,6 +29,7 @@ class HomeController extends Controller
         $user = User::find($user_id);
         $var = $user->name;
         $posts = $user->posts;
-        return view('home', compact('posts', 'var'));
+        $pp = $user->profile_pic;
+        return view('home', compact('posts', 'var', 'pp'));
     }
 }

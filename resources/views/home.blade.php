@@ -7,11 +7,23 @@
    <h2>{{$var}}</h2> 
     <div class="row">
         <div class="col-md-7">
-            <img src="" style="width: 295px;" class="img-responsive">
+            <img draggable="false" src="/storage/profile_pics/{{$pp}}" style="width: 295px;" class="img-responsive">
+            {!! Form::open(['action' => 'ProPicControl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                {!! Form::file('profile_pic', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Update', ['class' => 'btn btn-success']) !!}
+            {!! Form::close() !!}
         </div>
+        <br><br><br>
         <div class="col-md-5">
             <div class="panel panel-default">
-                <div class="panel-heading">{{$var}}'s posts</div>
+                <div class="panel-heading">
+                    @if(auth()->user()->name = $var)
+                        Your posts
+                    @else
+                        {{$var}}'s posts
+                    @endif 
+                    <a href="/posts/create"><button class="btn btn-success pull-right">Create post</button></a>     
+                </div>
 
                 <div class="panel-body">
                     @if (session('status'))
