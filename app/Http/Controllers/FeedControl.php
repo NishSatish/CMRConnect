@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\User;
 
 class FeedControl extends Controller
 {
@@ -13,7 +15,9 @@ class FeedControl extends Controller
      */
     public function index()
     {
-        //
+        $feedposts = Post::orderBy('created_at', 'desc')->get();
+
+        return view('feed/feed')->with('feedposts', $feedpost);
     }
 
     /**

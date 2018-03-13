@@ -2,12 +2,16 @@
 
 @section('content')
 
-<h1 class="page-header">Your profile</h1>
+<h1 class="page-header">
+    @if(auth()->user()->id == $user->id)
+        Your profile 
+    @else
+        {{$user->name}}'s Profile 
+    @endif</h1>
 <div class="container">
-   <h2>{{$var}}</h2> 
     <div class="row">
         <div class="col-md-7">
-            <img draggable="false" src="/storage/profile_pics/{{$pp}}" style="width: 295px;" class="img-responsive">
+            <img draggable="false" src="/storage/profile_pics/{{$user->profile_pic}}" style="width: 295px;" class="img-responsive">
             {!! Form::open(['action' => 'ProPicControl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 {!! Form::file('profile_pic', ['class' => 'btn btn-primary']) !!}
                 {!! Form::submit('Update', ['class' => 'btn btn-success']) !!}
@@ -17,12 +21,12 @@
         <div class="col-md-5">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    @if(auth()->user()->name = $var)
+                    @if(auth()->user()->id == $user->id)
                         Your posts
+                        <a href="/posts/create"><button class="btn btn-success pull-right">Create post</button></a>
                     @else
-                        {{$var}}'s posts
-                    @endif 
-                    <a href="/posts/create"><button class="btn btn-success pull-right">Create post</button></a>     
+                        {{$user->name}}'s posts
+                    @endif                          
                 </div>
 
                 <div class="panel-body">
@@ -39,7 +43,7 @@
                             </div>
                         @endforeach
                      @else
-                        No posts found.                        
+                        No posts found.
                      @endif      
                 </div>
             </div>

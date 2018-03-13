@@ -37,7 +37,11 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if(Auth::user())
+                            <li><a href="/allusers">Search all users</a></li>
+                        @else
+
+                        @endif    
                     </ul>
 
                     <!-- Right Side Of Navbar -->

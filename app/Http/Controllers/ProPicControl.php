@@ -15,7 +15,7 @@ class ProPicControl extends Controller
      */
     public function index()
     {
-        //
+        return view('404');
     }
 
     /**

@@ -10,7 +10,11 @@
     	<div class="form-group">
     		{{Form::label('body', 'Body')}}
     		{{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
-    	</div>          
+    	</div>
+        <div class="form-group">
+            {{Form::label('uploadNote', 'A cover image for the post')}}
+            {!! Form::file('cover_pic', ['class' => 'btn btn-primary']) !!}
+        </div>          
     	{{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 	{!! Form::close() !!}
 	

@@ -12,14 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+	if (Auth::user()) {
+		return view('feed/feed');
+	} else {
+		return view('index');
+	}
+    
 });
 
 Route::resource('/posts', 'PostControl');
 Route::resource('/propicsamma', 'ProPicControl');
-Route::resource('/feed', 'FeedControl');
+Route::resource('/feed', 'FeedControl@index');
+Route::resource('/profile', 'ProfilePagesControl');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/allusers', 'AllUsersControl@DoTheThings');
 
