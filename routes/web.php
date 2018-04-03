@@ -10,19 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-	if (Auth::user()) {
-		return view('feed/feed');
-	} else {
-		return view('index');
-	}
-    
-});
-
+Route::get('/', 'FeedControl@ShowFeed');
 Route::resource('/posts', 'PostControl');
 Route::resource('/propicsamma', 'ProPicControl');
-Route::resource('/feed', 'FeedControl@index');
 Route::resource('/profile', 'ProfilePagesControl');
 
 Auth::routes();
